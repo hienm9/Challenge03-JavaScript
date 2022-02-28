@@ -46,8 +46,29 @@ function generatePassword() {
 // create a function to prompt user for password options
 function passwordOptions() {
 // prompt for lenght of the password
-  passwordLenght = window.prompt("Enter a number for your password lenght. Number must be between 5 - 30");
-  // if the number entered is < 5 then alert "password lenght must be at least 5 characters"
+let isValidInput="YES";
+
+do {
+  
+passwordLenght = window.prompt("Enter a number for your password lenght. Number must be between 5 - 30");
+debugger;
+isValidInput="YES";
+  if (passwordLenght < 5) {
+    alert("password lenght must be at least 5 characters");
+    isValidInput="NO";
+  }
+  else if  (passwordLenght >30) {
+  alert("password lenght must be less thanb 30 characters");
+  isValidInput="NO";
+}
+  else if (isNaN(passwordLenght) ) {
+  alert("Password lenght must be a number");
+  isValidInput="NO";
+}
+
+  }
+  while (isValidInput=="NO");
+    // if the number entered is < 5 then alert "password lenght must be at least 5 characters"
   // if the number entere is > 30, then alert "Password leght must be lesss than 30 characters"
   // if the input is not a number, then alert Password lenght must be a number"
 
