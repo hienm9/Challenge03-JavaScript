@@ -21,7 +21,6 @@ function writePassword() {
   let password = generatePassword();
   let passwordText = document.querySelector("#password");
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
@@ -31,6 +30,7 @@ generateBtn.addEventListener("click", writePassword);
 // create a function to generate password
 function generatePassword() {
   let randomPass = "";
+
   let randElement = "";
   // create a for loop 
   // Use the getRandom function to get arandom element from the string that has all answers
