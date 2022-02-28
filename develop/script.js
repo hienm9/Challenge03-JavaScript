@@ -7,6 +7,11 @@ let numCharacters = "1234567890";
 let specialCharacters = "!@#$%^&*()_+";
 let passwordLenght = 0;
 
+let charNum = false;
+let charLowercase = false;
+let charUppercase = false;
+let charSpecial = false;
+
 // Assignment Code
 let generateBtn = document.querySelector("#generate");
 
@@ -15,7 +20,6 @@ function writePassword() {
   passwordOptions();
   let password = generatePassword();
   let passwordText = document.querySelector("#password");
-  // debugger;
   passwordText.value = password;
 
 }
@@ -30,8 +34,30 @@ function generatePassword() {
   let randElement = "";
   // create a for loop 
   // Use the getRandom function to get arandom element from the string that has all answers
+  if (charNum) {
+    randElement = numCharacters[Math.floor(Math.random() * numCharacters.length)];
+    passwordLenght=passwordLenght-1
+  };
+   if (charLowercase) {
+      randElement = randElement  + lowerCharacters[Math.floor(Math.random() * lowerCharacters.length)];
+      passwordLenght=passwordLenght-1
+    };
+   
+    if (charUppercase) {
+      randElement = randElement  + upperCharacters[Math.floor(Math.random() * upperCharacters.length)];
+      passwordLenght=passwordLenght-1
+    };
+    if (charSpecial) {
+      randElement = randElement  + specialCharacters[Math.floor(Math.random() * specialCharacters.length)];
+      passwordLenght=passwordLenght-1
+    };
+
   for (let i = 0; i < passwordLenght; i++) {
     randomPass = allAnswers[Math.floor(Math.random() * allAnswers.length)];
+   
+  //  randomPass = allAnswers[Math.floor(Math.random() * allAnswers.length)];
+
+   
     randElement = randElement + randomPass;
   }
   return randElement;
@@ -80,7 +106,7 @@ function validateChar(){
         // confirm user to include lowercase in the password
         isValidChar="YES";    
         // debugger;
-        let charLowercase = window.confirm("Do you want to include lowercase?");
+            charLowercase = window.confirm("Do you want to include lowercase?");
             // conditional statement if answer is yes then add to the emptry string
             if (charLowercase ) {
               allAnswers = allAnswers.concat(lowerCharacters);
@@ -88,15 +114,15 @@ function validateChar(){
             
             // conditional statement to if e.g uppcase is yes, then "add to an empty string (need to create empty string to store the value"
             // if no then exit out the if statement
-            let charUppercase = window.confirm("Do you want to include uppercase?");
+           charUppercase = window.confirm("Do you want to include uppercase?");
             if (charUppercase ) {
               allAnswers = allAnswers.concat(upperCharacters);
             }
-            let charNum = window.confirm("Do you want to include numbers?");
+           charNum = window.confirm("Do you want to include numbers?");
             if (charNum ) {
               allAnswers = allAnswers.concat(numCharacters);
             }
-            let charSpecial = window.confirm("Do you want to include special characters?");
+           charSpecial = window.confirm("Do you want to include special characters?");
             if (charSpecial ) {
               allAnswers = allAnswers.concat(specialCharacters);
             }
