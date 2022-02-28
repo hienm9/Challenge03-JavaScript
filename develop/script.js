@@ -14,7 +14,7 @@ function writePassword() {
     passwordOptions();
     let password = generatePassword();
     let passwordText = document.querySelector("#password");
-
+debugger;
   passwordText.value = password;
 
 }
@@ -28,10 +28,12 @@ function generatePassword() {
   debugger;
   // create a for loop 
   // Then the password is generated, use the getRandom function to get arandom element from an array as an example below:
+  let randomPass="";
+  let randElement="";
   for (let i =0; i < passwordLenght; i++) {
-    let randomPass = allAnswers[Math.floor(Math.random() * passwordLenght.length)];
+    randomPass = allAnswers[Math.floor(Math.random() * allAnswers.length)];
     console.log(randomPass);
-    let randElement = randElement + randomPass;
+    randElement = randElement + randomPass;
     console.log(randElement);
     }
     return randElement;
@@ -44,15 +46,19 @@ function generatePassword() {
 // create a function to prompt user for password options
 function passwordOptions() {
 // prompt for lenght of the password
-  passwordLenght = window.prompt("Enter a number for your password lenght?");
-  // prompt for character types to include lowercase
-// use window prompt and window confirm such as do you want to use upper case.
-// conditional statement to if e.g uppcase is yes, then "add to an empty string (need to create empty string to store the value"
-// if no then exit out the if statement
+  passwordLenght = window.prompt("Enter a number for your password lenght. Number must be between 5 - 30");
+  // if the number entered is < 5 then alert "password lenght must be at least 5 characters"
+  // if the number entere is > 30, then alert "Password leght must be lesss than 30 characters"
+  // if the input is not a number, then alert Password lenght must be a number"
+
+// confirm user to include lowercase in the password
 let charLowercase = window.confirm("Do you want to include lowercase?");
+// conditional statement if answer is yes then add to the emptry string
 if (charLowercase) {
    allAnswers = allAnswers.concat(lowerCharacters);
 }
+// conditional statement to if e.g uppcase is yes, then "add to an empty string (need to create empty string to store the value"
+// if no then exit out the if statement
 let charUppercase = window.confirm("Do you want to include uppercase?");
 if (charUppercase) {
    allAnswers = allAnswers.concat(upperCharacters);
