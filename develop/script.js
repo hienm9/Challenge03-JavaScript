@@ -1,3 +1,4 @@
+// create an empty string that will hold the characters from answers
 let allAnswers = "";
 // create a string/array for the each characters type: lowercase, uppercase, numeric, special
 let lowerCharacters = "abcdefghijklmnopqrstuvwxyz";
@@ -14,7 +15,7 @@ function writePassword() {
   passwordOptions();
   let password = generatePassword();
   let passwordText = document.querySelector("#password");
-  debugger;
+  // debugger;
   passwordText.value = password;
 
 }
@@ -25,33 +26,27 @@ generateBtn.addEventListener("click", writePassword);
 
 // create a function to generate password
 function generatePassword() {
-  
-  // create a for loop 
-  // Then the password is generated, use the getRandom function to get arandom element from an array as an example below:
   let randomPass = "";
   let randElement = "";
+  // create a for loop 
+  // Use the getRandom function to get arandom element from the string that has all answers
   for (let i = 0; i < passwordLenght; i++) {
     randomPass = allAnswers[Math.floor(Math.random() * allAnswers.length)];
-    console.log(randomPass);
     randElement = randElement + randomPass;
-    console.log(randElement);
   }
   return randElement;
-
-  //Close the for loop
 }
 
-// create an emptry to store the "yes" values
 
 // create a function to prompt user for password options
 function passwordOptions() {
-  // prompt for lenght of the password
-   // if the number entered is < 5 then alert "password lenght must be at least 5 characters"
-  // if the number entere is > 30, then alert "Password leght must be lesss than 30 characters"
-  // if the input is not a number, then alert Password lenght must be a number"
-
+  // create an emptry to store the "yes" values
   let isValidInput = "YES";
 
+   // prompt for lenght of the password
+  // if the number entered is < 5 then alert "password lenght must be at least 5 characters"
+  // if the number entere is > 30, then alert "Password leght must be lesss than 30 characters"
+  // if the input is not a number, then alert Password lenght must be a number"
   do {
     passwordLenght = window.prompt("Enter a number for your password lenght. Number must be between 5 - 30");
     
@@ -72,19 +67,19 @@ function passwordOptions() {
       alert("Password lenght must be a number");
       isValidInput = "NO";
     } else {
-       callValidateChar();
+       validateChar();
           }
       
   }
   while (isValidInput == "NO");
 }
 
-function callValidateChar(){
+function validateChar(){
   let isValidChar="YES";
   do{
         // confirm user to include lowercase in the password
         isValidChar="YES";    
-        debugger;
+        // debugger;
         let charLowercase = window.confirm("Do you want to include lowercase?");
             // conditional statement if answer is yes then add to the emptry string
             if (charLowercase ) {
@@ -106,7 +101,7 @@ function callValidateChar(){
               allAnswers = allAnswers.concat(specialCharacters);
             }
             if ((!charLowercase) && (!charUppercase) && (!charNum) && (!charSpecial)) {
-              alert("please select at least on option: upperdase, lowecase, specail char")
+              alert("Please select at least one option: upperdase, lowecase, number or special character")
               isValidChar="NO";
             }
    }
